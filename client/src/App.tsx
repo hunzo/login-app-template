@@ -8,9 +8,10 @@ import Profile from './components/profile/profile'
 import RequiredAuth from './RequiredAuth'
 
 function App() {
+  const { auth } = useAuth()
   return (
     <div className="App">
-      <Navbar />
+      {auth ? <Navbar /> : null}
       <Routes>
         <Route path="/" element={<div>Home</div>} />
         <Route path="/login" element={<Login />} />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../AuthProvider'
 import { UserAuth } from '../../services/fetchApi'
@@ -6,13 +6,18 @@ import './login.css'
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const { setAuth, setUser } = useAuth()
+  const { setAuth, setUser, auth } = useAuth()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (auth) {
+      navigate('/app/profile', { replace: true })
+    }
+  })
 
   const hSubmit = () => {
     UserAuth(username, password)
       .then((rs) => {
-        // window.localStorage.setItem('token', JSON.stringify(rs.data.token))
         setAuth(true)
         setUser({
           username: username,
@@ -53,7 +58,7 @@ const Login = () => {
             }}
           />
         </div>
-        <div>
+        <div style={{ marginTop: '10px' }} className="login-input">
           <button type="submit">submit</button>
         </div>
       </form>
