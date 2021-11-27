@@ -1,5 +1,9 @@
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.Content {
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
 }

@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import { useAuth } from './AuthProvider'
 import About from './components/about/about'
@@ -13,7 +13,6 @@ function App() {
     <div className="App">
       {auth ? <Navbar /> : null}
       <Routes>
-        <Route path="/" element={<div>Home</div>} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/app/*"
@@ -23,20 +22,17 @@ function App() {
             </RequiredAuth>
           }
         />
+        <Route path="*" element={<Login />} />
       </Routes>
     </div>
   )
 }
 
 const Protect = () => {
-  const { setAuth } = useAuth()
   return (
-    <div>
-      <div>
-        <Link to="profile">profile</Link> | <Link to="about">About</Link> |{' '}
-        <button onClick={() => setAuth(false)}>logout</button>
-      </div>
+    <div className="Content">
       <Routes>
+        <Route path="/" element={<h1>Home Page</h1>} />
         <Route path="profile" element={<Profile />} />
         <Route path="about" element={<About />} />
       </Routes>

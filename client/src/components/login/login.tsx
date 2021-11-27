@@ -11,7 +11,7 @@ const Login = () => {
 
   useEffect(() => {
     if (auth) {
-      navigate('/app/profile', { replace: true })
+      navigate('/app', { replace: true })
     }
   })
 
@@ -23,7 +23,7 @@ const Login = () => {
           username: username,
           token: rs.data.token,
         })
-        navigate('/app/profile', { replace: true })
+        navigate('/app', { replace: true })
       })
       .catch((e) => {
         alert(JSON.stringify(e))
@@ -43,7 +43,7 @@ const Login = () => {
         <div className="login-input">
           <input
             type="text"
-            placeholder="username"
+            placeholder="   username default: test"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setUsername(e.target.value)
             }}
@@ -52,7 +52,7 @@ const Login = () => {
         <div className="login-input">
           <input
             type="password"
-            placeholder="password"
+            placeholder="   password default: test"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setPassword(e.target.value)
             }}

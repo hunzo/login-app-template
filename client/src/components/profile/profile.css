@@ -1,0 +1,5 @@
+.wrap {
+  word-wrap: break-word;
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
+}

@@ -1,5 +1,6 @@
 import { useAuth } from '../../AuthProvider'
 import { GetProfile } from '../../services/fetchApi'
+import './profile.css'
 
 const Profile = () => {
   const { setAuth, user } = useAuth()
@@ -14,7 +15,9 @@ const Profile = () => {
   }
   return (
     <div>
-      <h1>Profile {user.username}</h1>
+      <h1>Profile Page</h1>
+      <p>Hello {user.username} !!</p>
+      <p className="wrap">Token: {user.token}</p>
       <button onClick={getProfile}>check session</button>
     </div>
   )
